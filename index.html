@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katakana Practice!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Learn Katakana! (カタカナ)</h1>
+
+        <div id="word-display-area">
+            <p>Type the Katakana for:</p>
+            <div id="romaji-word"></div>
+        </div>
+
+        <div id="input-area-container">
+            <div id="katakana-input" aria-live="polite"></div>
+            <button id="check-button">Check</button>
+        </div>
+
+        <div id="keyboard">
+            <!-- Updated 3x4 Layout -->
+            <div class="keyboard-row">
+                <button class="key" data-base="ア" data-variants='["イ","ウ","エ","オ"]'>ア</button>
+                <button class="key" data-base="カ" data-variants='["キ","ク","ケ","コ"]'>カ</button>
+                <button class="key" data-base="サ" data-variants='["シ","ス","セ","ソ"]'>サ</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key" data-base="タ" data-variants='["チ","ツ","テ","ト"]'>タ</button>
+                <button class="key" data-base="ナ" data-variants='["ニ","ヌ","ネ","ノ"]'>ナ</button>
+                <button class="key" data-base="ハ" data-variants='["ヒ","フ","ヘ","ホ"]'>ハ</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="key" data-base="マ" data-variants='["ミ","ム","メ","モ"]'>マ</button>
+                <button class="key" data-base="ヤ" data-variants='["（ヤ）","ユ","（ユ）","ヨ","（ヨ）"]'>ヤ</button> <!-- Small versions handled via logic or specific data -->
+                <button class="key" data-base="ラ" data-variants='["リ","ル","レ","ロ"]'>ラ</button>
+            </div>
+            <div class="keyboard-row">
+                 <!-- Special Chars now under 'ー' -->
+                 <button class="key" data-base="ー" data-variants='["ッ","ャ","ュ","ョ"]'>ー</button>
+                 <button class="key" data-base="ワ" data-variants='["（ワ）","ヲ","ン"]'>ワ</button> <!-- ン added here -->
+                 <button id="modifier-toggle-button" class="key modifier-key">゛゜</button> <!-- Combined Modifier Key -->
+            </div>
+            <!-- Control Keys - Separate Row -->
+            <div class="keyboard-row control-row">
+                 <button id="backspace-button" class="control-key">← Backspace</button>
+                 <button id="clear-button" class="control-key">Clear</button>
+            </div>
+        </div>
+
+        <!-- Variant menu container remains the same -->
+        <div id="variant-menu-container" style="position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: visible; z-index: 100;">
+             <div id="variant-menu" class="variant-menu" style="display: none;"></div>
+        </div>
+
+
+        <div id="feedback-overlay">
+            <span id="feedback-text"></span>
+        </div>
+
+        <div id="counters">
+            <p>Score: <span id="success-count">0</span> Correct / <span id="mistake-count">0</span> Mistakes</p>
+        </div>
+
+        <div id="history-area">
+            <h2>Session History (Mistakes)</h2>
+            <ul id="history-list"></ul>
+        </div>
+        <button id="toggle-history">Show/Hide History</button>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

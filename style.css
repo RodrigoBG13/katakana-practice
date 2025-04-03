@@ -1,0 +1,340 @@
+/* Basic Reset & Font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: #282c34; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align top */
+    min-height: 100vh;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Game Container */
+#game-container {
+    background-color: #3f4450; /* Slightly lighter container */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 550px; /* Adjusted max-width for 3-col layout */
+    width: 100%;
+    text-align: center;
+    position: relative; /* Needed for absolute positioning of variant menu container */
+}
+
+h1 {
+    color: #a6d1ff; /* Pastel blue */
+    margin-bottom: 25px;
+}
+
+/* Word Display */
+#word-display-area {
+    margin-bottom: 20px;
+    background-color: #525866;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#word-display-area p {
+    color: #f0c0ff; /* Pastel purple */
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+#romaji-word {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+    min-height: 1.2em; /* Prevent layout shift */
+    font-family: 'Arial', sans-serif; /* Use a clear font for Romaji */
+}
+
+
+/* Input Area */
+#input-area-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#katakana-input {
+    background-color: #e0e0e0; /* Light background for input */
+    color: #282c34; /* Dark text */
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-height: 45px; /* Fixed height */
+    width: 70%;
+    font-size: 1.8em;
+    text-align: center;
+    letter-spacing: 3px;
+    overflow-x: auto; /* Handle long inputs */
+    white-space: nowrap;
+}
+
+#check-button {
+    padding: 10px 18px;
+    font-size: 1em;
+    background-color: #88d8b0; /* Pastel green */
+    color: #282c34;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    font-weight: bold;
+}
+#check-button:hover {
+    background-color: #a3e6c7;
+}
+
+
+/* Keyboard */
+#keyboard {
+    margin-top: 20px;
+    user-select: none; /* Prevent text selection on rapid clicks */
+    display: flex; /* Use flexbox for overall keyboard structure */
+    flex-direction: column; /* Stack rows vertically */
+    align-items: center; /* Center rows horizontally */
+    gap: 8px; /* Gap between rows */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Gap between keys in a row */
+    width: 100%; /* Ensure rows take width for centering */
+}
+
+.key, .control-key {
+    background-color: #6c7a89; /* Key background */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0; /* Remove padding, use flex to center */
+    width: 75px;  /* Fixed width */
+    height: 55px; /* Fixed height */
+    font-size: 1.5em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    position: relative; /* Needed for variant menu positioning */
+    display: flex; /* Use flex to center content */
+    justify-content: center;
+    align-items: center;
+}
+.key:hover:not(.active-menu-key), .control-key:hover {
+     background-color: #8d9aa9;
+}
+/* Style when menu is active */
+.key.active-menu-key {
+    background-color: #525866; /* Darker background when menu is open */
+    /* opacity: 0.7; */ /* Optional: make it slightly transparent */
+}
+
+.key:active, .control-key:active {
+    transform: scale(0.95);
+}
+
+.modifier-key {
+    background-color: #e8a1a1; /* Different color for modifiers */
+    color: #333;
+    font-size: 1.2em; /* Slightly smaller font for dual symbols */
+}
+.modifier-key:hover {
+    background-color: #f0b9b9;
+}
+
+.control-row {
+    margin-top: 15px; /* Space above control keys */
+}
+.control-key {
+    font-size: 0.9em;
+    /* padding: 10px 15px; */ /* Removed padding */
+    width: auto; /* Allow control keys to size naturally */
+    min-width: 110px; /* Give them some minimum width */
+    height: 45px; /* Slightly shorter */
+    background-color: #a6a6a6;
+    color: #333;
+}
+.control-key:hover {
+     background-color: #c0c0c0;
+}
+
+
+/* Variant Menu (Circular Menu) */
+/* Container is now absolutely positioned relative to game-container */
+#variant-menu-container {
+    pointer-events: none; /* Container doesn't block clicks */
+}
+
+.variant-menu {
+    position: absolute; /* Positioned by JS */
+    /* background-color: rgba(63, 68, 80, 0.95); /* Semi-transparent dark */
+    /* border: 1px solid #a6d1ff; */
+    /* border-radius: 50%; /* Make it circular */
+    /* padding: 15px; /* Padding around buttons */
+    /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5); */
+    /* display: flex; NO - using absolute positioning for children */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* width & height set by JS */
+    /* display: none; /* Initially hidden */
+    pointer-events: auto; /* Enable interaction with menu itself */
+}
+
+.variant-key {
+    background-color: #f0c0ff; /* Pastel purple */
+    color: #282c34;
+    border: none;
+    border-radius: 50%; /* Circular buttons */
+    width: 50px; /* Size of variant buttons */
+    height: 50px;
+    font-size: 1.3em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Positioned within the menu by JS */
+    pointer-events: auto; /* Allow clicks on buttons */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.variant-key:hover {
+    background-color: #ffe0ff;
+    transform: scale(1.1); /* Pop effect */
+    z-index: 10; /* Ensure hovered item is on top */
+}
+
+
+/* Feedback Overlay */
+#feedback-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    opacity: 0;
+    visibility: hidden;
+    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 200;
+    pointer-events: none; /* Allow interaction behind */
+}
+
+#feedback-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+#feedback-overlay.correct {
+    background-color: rgba(136, 216, 176, 0.7); /* Translucent green */
+}
+
+#feedback-overlay.wrong {
+    background-color: rgba(232, 161, 161, 0.7); /* Translucent red */
+}
+
+#feedback-text {
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+
+/* Counters */
+#counters {
+    margin-top: 25px;
+    font-size: 1.1em;
+    color: #c0c0c0;
+}
+#success-count {
+    color: #88d8b0; /* Pastel green */
+    font-weight: bold;
+}
+#mistake-count {
+    color: #e8a1a1; /* Pastel red */
+    font-weight: bold;
+}
+
+/* History */
+#history-area {
+    margin-top: 25px;
+    background-color: #525866;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Add scroll */
+    text-align: left;
+    display: none; /* Initially hidden */
+}
+#history-area.visible {
+    display: block;
+}
+
+#history-area h2 {
+    font-size: 1.1em;
+    color: #a6d1ff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#history-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#history-list li {
+    background-color: #3f4450;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border-left: 4px solid #e8a1a1; /* Red border for mistakes */
+}
+#history-list li span {
+    display: block; /* Make spans stack */
+    margin-bottom: 3px;
+}
+.romaji-hist {
+    font-weight: bold;
+    color: #e0e0e0;
+}
+.user-input-hist {
+    color: #ffc8c8; /* Light red for user's wrong input */
+}
+.correct-kana-hist {
+    color: #c8ffc8; /* Light green for correct answer */
+}
+
+#toggle-history {
+    display: block;
+    margin: 15px auto 0;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #6c7a89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#toggle-history:hover {
+    background-color: #8d9aa9;
+}
