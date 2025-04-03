@@ -146,6 +146,16 @@ h1 {
     transform: scale(0.95);
 }
 
+#long-vowel-key {
+    background-color: #add8e6; /* Light Baby Blue */
+    /* Optional: Adjust text color for better contrast if needed */
+    color: #333;
+}
+
+#long-vowel-key:hover {
+    background-color: #bfe0f0; /* Slightly lighter blue */
+}
+
 .modifier-key {
     background-color: #e8a1a1; /* Different color for modifiers */
     color: #333;

@@ -37,12 +37,12 @@
             </div>
             <div class="keyboard-row">
                 <button class="key" data-base="マ" data-variants='["ミ","ム","メ","モ"]'>マ</button>
-                <button class="key" data-base="ヤ" data-variants='["（ヤ）","ユ","（ユ）","ヨ","（ヨ）"]'>ヤ</button> <!-- Small versions handled via logic or specific data -->
+                <button class="key" data-base="ヤ" data-variants='["ユ","ヨ"]'>ヤ</button> <!-- Small versions handled via logic or specific data -->
                 <button class="key" data-base="ラ" data-variants='["リ","ル","レ","ロ"]'>ラ</button>
             </div>
             <div class="keyboard-row">
                  <!-- Special Chars now under 'ー' -->
-                 <button class="key" data-base="ー" data-variants='["ッ","ャ","ュ","ョ"]'>ー</button>
+                 <button id="long-vowel-key" class="key" data-base="ー" data-variants='["ッ","ャ","ュ","ョ"]'>ー</button>
                  <button class="key" data-base="ワ" data-variants='["（ワ）","ヲ","ン"]'>ワ</button> <!-- ン added here -->
                  <button id="modifier-toggle-button" class="key modifier-key">゛゜</button> <!-- Combined Modifier Key -->
             </div>
